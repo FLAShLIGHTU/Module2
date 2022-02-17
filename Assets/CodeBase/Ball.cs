@@ -1,28 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+
 
 public class Ball : MonoBehaviour
 {
+  #region Variables
+
   public Rigidbody2D Rb;
   public float Speed;
   public Vector2 Direction;
 
-  [Header("Debug")]
-  public Vector2 DirectionNormolized;
-  public float Velocity;
-  
+  #endregion
+
+  #region Unity Lifecycle
+
   private void Start()
   {
-    DirectionNormolized = Direction.normalized;
-    Rb.velocity = Direction.normalized * Speed;
+    
   }
 
   private void Update()
   {
-    Velocity = Rb.velocity.magnitude;
-    //Rb.velocity = new Vector2(x:0, y:10);
+    if (Input.GetMouseButtonDown(0))
+    {
+      StartBall();
+    }
+    
+    
   }
-  
+
+  #endregion
+
+  #region Private methods
+
+  private void StartBall()
+  {
+    Rb.velocity = Direction.normalized * Speed;
+  }
+
+  #endregion
 }
