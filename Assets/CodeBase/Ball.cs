@@ -6,19 +6,29 @@ using UnityEngine.UIElements;
 public class Ball : MonoBehaviour
 {
   #region Variables
-
+  
+  [Header("Base Settings")]
   public Rigidbody2D Rb;
   public float Speed;
   public Vector2 Direction;
-
+  
+  [Header ("Pad Settings")]
   public Transform PadTransform;
   public float YOffsetFromPad;
 
+  [Header("Audio")] 
+  public AudioSource AudioSource;
+  
   private bool _isStarted;
 
   #endregion
 
   #region Unity Lifecycle
+
+  private void OnCollisionEnter2D(Collision2D col)
+  {
+    AudioSource.Play();
+  }
 
   private void Start()
   {
