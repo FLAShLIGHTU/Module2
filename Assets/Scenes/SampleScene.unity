@@ -845,7 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rb: {fileID: 1286691921}
   Speed: 10
-  Direction: {x: 0.5, y: 0.5}
+  Direction: {x: 0.06, y: 0.5}
   PadTransform: {fileID: 1023297539}
   YOffsetFromPad: 1.2
 --- !u!1 &1389498141

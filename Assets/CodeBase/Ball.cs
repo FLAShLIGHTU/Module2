@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class Ball : MonoBehaviour
@@ -37,8 +38,14 @@ public class Ball : MonoBehaviour
     {
       StartBall();
     }
-    
-    
+
+
+  }
+  
+  private void OnDrawGizmos()
+  {
+    Gizmos.color = Color.red;
+    Gizmos.DrawRay(transform.position, Direction );
   }
 
   #endregion
