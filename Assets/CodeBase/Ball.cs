@@ -1,24 +1,22 @@
-
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 public class Ball : MonoBehaviour
 {
   #region Variables
-  
-  [Header("Base Settings")]
+
+  [Header("Base Settings")] 
   public Rigidbody2D Rb;
   public float Speed;
   public Vector2 Direction;
-  
-  [Header ("Pad Settings")]
+
+  [Header("Pad Settings")] 
   public Transform PadTransform;
   public float YOffsetFromPad;
 
-  [Header("Audio")] 
+  [Header("Audio")]
   public AudioSource AudioSource;
-  
+
   private bool _isStarted;
 
   #endregion
@@ -32,7 +30,6 @@ public class Ball : MonoBehaviour
 
   private void Start()
   {
-    
   }
 
   private void Update()
@@ -43,19 +40,17 @@ public class Ball : MonoBehaviour
     }
 
     MoveBallWithaPad();
-    
+
     if (Input.GetMouseButtonDown(0))
     {
       StartBall();
     }
-
-
   }
-  
+
   private void OnDrawGizmos()
   {
     Gizmos.color = Color.red;
-    Gizmos.DrawRay(transform.position, Direction );
+    Gizmos.DrawRay(transform.position, Direction);
   }
 
   #endregion

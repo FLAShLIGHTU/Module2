@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -9,7 +5,7 @@ public class AudioManager : MonoBehaviour
   #region Variables
 
   public AudioSource AudioSource;
-  
+
   private static AudioManager _instance;
 
   #endregion
