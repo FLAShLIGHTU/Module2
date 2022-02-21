@@ -26,7 +26,7 @@ public class Block : MonoBehaviour
 
     #endregion
 
-    #region Private Regions
+    #region Private Methods
 
     private void OnCollisionEnter2D(Collision2D col)
     {

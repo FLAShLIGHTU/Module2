@@ -4,19 +4,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = nameof(PlayerStatsSO), menuName = "Configs/Stats")]
 public class PlayerStatsSO : ScriptableObject
 {
-    [SerializeField] private int _playerStatsSO;
+    #region Variables
 
-    public int Score => _playerStatsSO;
+    [SerializeField] private int ScoreLableSO;
+
+    public int Score => ScoreLableSO;
     public event Action OnScoreUpdate;
+
+    #endregion
+
+    #region Public Methods
 
     public void AddScore(int score)
     {
-        _playerStatsSO += score;
+        ScoreLableSO += score;
         OnScoreUpdate?.Invoke();
     }
 
     public void ResetScore()
     {
-        _playerStatsSO = 0;
+        ScoreLableSO = 0;
     }
+
+    #endregion
 }

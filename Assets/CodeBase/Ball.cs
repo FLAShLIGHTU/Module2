@@ -5,20 +5,16 @@ public class Ball : MonoBehaviour
 {
     #region Variables
 
-    [Header("Base Settings")] 
-    public Rigidbody2D Rb;
+    [Header("Base Settings")] public Rigidbody2D Rb;
     public float Speed;
-    
 
-    [Header("Pad Settings")] 
-    public Transform PadTransform;
+
+    [Header("Pad Settings")] public Transform PadTransform;
     public float YOffsetFromPad;
 
-    [Header("Audio")]
-    public AudioSource AudioSource;
+    [Header("Audio")] public AudioSource AudioSource;
 
-    [Header("Random range")]
-    public int XMin;
+    [Header("Random range")] public int XMin;
     public int XMax;
     public int YMin;
     public int YMax;
@@ -29,15 +25,6 @@ public class Ball : MonoBehaviour
     #endregion
 
     #region Unity Lifecycle
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        AudioSource.Play();
-    }
-
-    private void Start()
-    {
-    }
 
     private void Update()
     {
@@ -54,15 +41,15 @@ public class Ball : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Private methods
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, _direction);
     }
-
-    #endregion
-
-    #region Private methods
 
     private void MoveBallWithaPad()
     {
@@ -78,6 +65,11 @@ public class Ball : MonoBehaviour
 
         Rb.velocity = _direction.normalized * Speed;
         _isStarted = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        AudioSource.Play();
     }
 
     #endregion

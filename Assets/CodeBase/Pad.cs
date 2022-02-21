@@ -11,12 +11,14 @@ public class Pad : MonoBehaviour
 
     #region Unity Lifecycle
 
-    #endregion
-
     void Update()
     {
         MouseMoove();
     }
+
+    #endregion
+
+    #region Private Methods
 
     private void MouseMoove()
     {
@@ -27,4 +29,6 @@ public class Pad : MonoBehaviour
         currentPosition.x = Mathf.Clamp(worldPosition.x, -range, range);
         transform.position = currentPosition;
     }
+
+    #endregion
 }
