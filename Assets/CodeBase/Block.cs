@@ -3,13 +3,17 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
   #region Variables
-
+  
+  [Header("Render Settings")]
   public SpriteRenderer SpriteRenderer;
   public Sprite Sprite1;
   public Sprite Sprite2;
 
+  [Header("Collision settings")]
   public int Hit;
   public AudioClip AudioClip;
+  public int Points;
+  public PlayerStatsSO PlayerStatsSO;
 
   private int _numberHit;
 
@@ -30,10 +34,12 @@ public class Block : MonoBehaviour
   {
     ChangeSprite();
     _numberHit++;
+
     if (_numberHit == Hit)
     {
       AudioManager.Instance.PlayOnShot(AudioClip);
       Destroy(gameObject);
+      PlayerStatsSO._playerStatsSO += Points;
     }
   }
 

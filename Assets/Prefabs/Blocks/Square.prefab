@@ -50,6 +50,8 @@ MonoBehaviour:
   Sprite2: {fileID: 21300000, guid: b252ccb0d09bc6c48a61c591b092e9ff, type: 3}
   Hit: 2
   AudioClip: {fileID: 8300000, guid: 38aac409d526c6d4a8293af0dc5bf226, type: 3}
+  Points: 5
+  PlayerStatsSO: {fileID: 11400000, guid: 12242c08a31c34826a66ceb268654cd3, type: 2}
 --- !u!212 &1255332835436876036
 SpriteRenderer:
   m_ObjectHideFlags: 0
