@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853d1043616442098488afa4e2ae1d4, type: 3}
   m_Name: PlayerStatsSO
   m_EditorClassIdentifier: 
-  _playerStatsSO: 0
+  _playerStatsSO: 23

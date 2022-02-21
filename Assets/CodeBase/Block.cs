@@ -2,54 +2,55 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-  #region Variables
-  
-  [Header("Render Settings")]
-  public SpriteRenderer SpriteRenderer;
-  public Sprite Sprite1;
-  public Sprite Sprite2;
+    #region Variables
 
-  [Header("Collision settings")]
-  public int Hit;
-  public AudioClip AudioClip;
-  public int Points;
-  public PlayerStatsSO PlayerStatsSO;
+    [Header("Render Settings")] public SpriteRenderer SpriteRenderer;
+    public Sprite[] Sprite;
 
-  private int _numberHit;
 
-  #endregion
+    [Header("Collision settings")] public int Hit;
+    public AudioClip AudioClip;
+    public int Points;
+    public PlayerStatsSO PlayerStatsSO;
 
-  #region Unity Lifecycle
+    #endregion
 
-  private void Start()
-  {
-    _numberHit = 0;
-  }
+    #region Unity Lifecycle
 
-  #endregion
-
-  #region Private Regions
-
-  private void OnCollisionEnter2D(Collision2D col)
-  {
-    ChangeSprite();
-    _numberHit++;
-
-    if (_numberHit == Hit)
+    private void Start()
     {
-      AudioManager.Instance.PlayOnShot(AudioClip);
-      Destroy(gameObject);
-      PlayerStatsSO._playerStatsSO += Points;
+        
+        Hit = Sprite.Length;
+        SpriteUpdate();
     }
-  }
 
-  private void ChangeSprite()
-  {
-    if (SpriteRenderer.sprite == Sprite1)
+    #endregion
+
+    #region Private Regions
+
+    private void OnCollisionEnter2D(Collision2D col)
     {
-      SpriteRenderer.sprite = Sprite2;
+        GetHit();
     }
-  }
 
-  #endregion
+    private void GetHit()
+    {
+        Hit--;
+
+        if (Hit <= 0)
+        {
+            Destroy(gameObject);
+            AudioManager.Instance.PlayOnShot(AudioClip);
+            PlayerStatsSO.AddScore(Points);
+        }
+        else
+            SpriteUpdate();
+    }
+
+    private void SpriteUpdate()
+    {
+        SpriteRenderer.sprite = Sprite[Hit - 1];
+    }
+
+    #endregion
 }

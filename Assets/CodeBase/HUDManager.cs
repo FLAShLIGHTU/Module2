@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +6,28 @@ public class HUDManager : MonoBehaviour
 {
     public Text Points;
     public PlayerStatsSO CurrentPoints;
-    private void Update()
+
+    
+    private void OnEnable()
     {
-        Points.text = ($"Score {CurrentPoints._playerStatsSO}");
+        CurrentPoints.OnScoreUpdate += UpdateScoreLabel;
+    }
+
+    private void OnDisable()
+    {
+        CurrentPoints.OnScoreUpdate -= UpdateScoreLabel;
+    }
+
+
+    public void Start()
+    {
+        CurrentPoints.ResetScore();
     }
     
+    private void UpdateScoreLabel()
+    {
+        Points.text = ($"Score: {CurrentPoints.Score}");
+    }
+
+
 }

@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 1255332835436876036}
-  Sprite1: {fileID: 21300000, guid: 869befa9fd9a00f44bebe58e3291d9d0, type: 3}
-  Sprite2: {fileID: 21300000, guid: b252ccb0d09bc6c48a61c591b092e9ff, type: 3}
+  Sprite:
+  - {fileID: 21300000, guid: 54f43b965391aac4894578db84a6366b, type: 3}
+  - {fileID: 21300000, guid: b252ccb0d09bc6c48a61c591b092e9ff, type: 3}
+  - {fileID: 21300000, guid: 869befa9fd9a00f44bebe58e3291d9d0, type: 3}
   Hit: 2
   AudioClip: {fileID: 8300000, guid: 38aac409d526c6d4a8293af0dc5bf226, type: 3}
   Points: 5

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2197571824280085156}
   - component: {fileID: -2931874625415958674}
   - component: {fileID: 2197571824280085163}
-  - component: {fileID: 2197571824280085157}
+  - component: {fileID: 6462428435366788110}
   m_Layer: 0
   m_Name: Pad
   m_TagString: Untagged
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e239c8d33deeeac4db98597c9c449a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 12.5
 --- !u!212 &2197571824280085163
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,8 +97,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2197571824280085157
-BoxCollider2D:
+--- !u!68 &6462428435366788110
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,15 +111,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.142857, y: 1}
-    newSize: {x: 2.2, y: 0.7}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.142857, y: 1}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.5789946, y: -0.4653091}
+  - {x: -1.5401222, y: 0.08010622}
+  - {x: -0.004074862, y: 0.44252723}
+  - {x: -0.019281395, y: 0.45442194}
+  - {x: 1.5445219, y: 0.085503064}
+  - {x: 1.5562966, y: -0.38586614}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
