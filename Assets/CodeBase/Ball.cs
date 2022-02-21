@@ -3,72 +3,82 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-  #region Variables
+    #region Variables
 
-  [Header("Base Settings")] 
-  public Rigidbody2D Rb;
-  public float Speed;
-  public Vector2 Direction;
+    [Header("Base Settings")] 
+    public Rigidbody2D Rb;
+    public float Speed;
+    
 
-  [Header("Pad Settings")] 
-  public Transform PadTransform;
-  public float YOffsetFromPad;
+    [Header("Pad Settings")] 
+    public Transform PadTransform;
+    public float YOffsetFromPad;
 
-  [Header("Audio")]
-  public AudioSource AudioSource;
+    [Header("Audio")]
+    public AudioSource AudioSource;
 
-  private bool _isStarted;
+    [Header("Random range")]
+    public int XMin;
+    public int XMax;
+    public int YMin;
+    public int YMax;
 
-  #endregion
+    private bool _isStarted;
+    private Vector2 _direction;
 
-  #region Unity Lifecycle
+    #endregion
 
-  private void OnCollisionEnter2D(Collision2D col)
-  {
-    AudioSource.Play();
-  }
+    #region Unity Lifecycle
 
-  private void Start()
-  {
-  }
-
-  private void Update()
-  {
-    if (_isStarted)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-      return;
+        AudioSource.Play();
     }
 
-    MoveBallWithaPad();
-
-    if (Input.GetMouseButtonDown(0))
+    private void Start()
     {
-      StartBall();
     }
-  }
 
-  private void OnDrawGizmos()
-  {
-    Gizmos.color = Color.red;
-    Gizmos.DrawRay(transform.position, Direction);
-  }
+    private void Update()
+    {
+        if (_isStarted)
+        {
+            return;
+        }
 
-  #endregion
+        MoveBallWithaPad();
 
-  #region Private methods
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartBall();
+        }
+    }
 
-  private void MoveBallWithaPad()
-  {
-    Vector3 currentPosition = PadTransform.position;
-    currentPosition.y += YOffsetFromPad;
-    transform.position = currentPosition;
-  }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, _direction);
+    }
 
-  private void StartBall()
-  {
-    Rb.velocity = Direction.normalized * Speed;
-    _isStarted = true;
-  }
+    #endregion
 
-  #endregion
+    #region Private methods
+
+    private void MoveBallWithaPad()
+    {
+        Vector3 currentPosition = PadTransform.position;
+        currentPosition.y += YOffsetFromPad;
+        transform.position = currentPosition;
+    }
+
+    private void StartBall()
+    {
+        _direction.x = Random.Range(XMin, XMax);
+        _direction.y = Random.Range(YMin, YMax);
+
+        Rb.velocity = _direction.normalized * Speed;
+        _isStarted = true;
+    }
+
+    #endregion
 }
