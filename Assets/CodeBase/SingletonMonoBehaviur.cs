@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SingletonMonoBehaviur<T> : MonoBehaviour
@@ -15,7 +16,6 @@ public class SingletonMonoBehaviur<T> : MonoBehaviour
     #endregion
 
     #region Unity Lifecycle
-
     protected virtual void Awake()
     {
         if (_instance != null)

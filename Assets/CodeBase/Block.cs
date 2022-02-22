@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Block : MonoBehaviour
@@ -16,6 +17,16 @@ public class Block : MonoBehaviour
     #endregion
 
     #region Unity Lifecycle
+    
+    private void Awake()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        
+    }
 
     private void Start()
     {
