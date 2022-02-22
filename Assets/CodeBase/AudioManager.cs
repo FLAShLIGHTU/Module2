@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
 
   #endregion
 
-  #region Properies
+  #region Properties
 
   public static AudioManager Instance => _instance;
 

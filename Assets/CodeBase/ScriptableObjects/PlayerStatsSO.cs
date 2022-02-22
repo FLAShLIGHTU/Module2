@@ -6,8 +6,7 @@ public class PlayerStatsSO : ScriptableObject
 {
     #region Variables
 
-    [SerializeField] private int ScoreLableSO;
-
+    [SerializeField] private int ScoreLableSO; 
     public int Score => ScoreLableSO;
     public event Action OnScoreUpdate;
 
