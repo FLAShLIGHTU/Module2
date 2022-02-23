@@ -1,49 +1,67 @@
+using System;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-  #region Variables
+    #region Variables
 
-  public SpriteRenderer SpriteRenderer;
-  public Sprite Sprite1;
-  public Sprite Sprite2;
+    [Header("Render Settings")] public SpriteRenderer SpriteRenderer;
+    public Sprite[] Sprite;
 
-  public int Hit;
-  public AudioClip AudioClip;
 
-  private int _numberHit;
+    [Header("Collision settings")] public int Hit;
+    public AudioClip AudioClip;
+    public int Points;
+    public PlayerStatsSO PlayerStatsSO;
 
-  #endregion
+    #endregion
 
-  #region Unity Lifecycle
-
-  private void Start()
-  {
-    _numberHit = 0;
-  }
-
-  #endregion
-
-  #region Private Regions
-
-  private void OnCollisionEnter2D(Collision2D col)
-  {
-    ChangeSprite();
-    _numberHit++;
-    if (_numberHit == Hit)
+    #region Unity Lifecycle
+    
+    private void Awake()
     {
-      AudioManager.Instance.PlayOnShot(AudioClip);
-      Destroy(gameObject);
+        
     }
-  }
 
-  private void ChangeSprite()
-  {
-    if (SpriteRenderer.sprite == Sprite1)
+    private void OnDestroy()
     {
-      SpriteRenderer.sprite = Sprite2;
+        
     }
-  }
 
-  #endregion
+    private void Start()
+    {
+        
+        Hit = Sprite.Length;
+        SpriteUpdate();
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        GetHit();
+    }
+
+    private void GetHit()
+    {
+        Hit--;
+
+        if (Hit <= 0)
+        {
+            Destroy(gameObject);
+            AudioManager.Instance.PlayOnShot(AudioClip);
+            PlayerStatsSO.AddScore(Points);
+        }
+        else
+            SpriteUpdate();
+    }
+
+    private void SpriteUpdate()
+    {
+        SpriteRenderer.sprite = Sprite[Hit - 1];
+    }
+
+    #endregion
 }

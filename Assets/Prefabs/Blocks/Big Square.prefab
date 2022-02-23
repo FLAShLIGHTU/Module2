@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 956225395168302029}
   - component: {fileID: -7015279246738218174}
   - component: {fileID: 330878831131035113}
+  - component: {fileID: -6335940010885930813}
   m_Layer: 0
   m_Name: Big Square
   m_TagString: Untagged
@@ -45,10 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 330878831131035113}
-  Sprite1: {fileID: 21300000, guid: f6706098fb045ee41a57ecea5e8cb9fd, type: 3}
-  Sprite2: {fileID: 21300000, guid: 70a9f2821451b7b4c8e2ba8c32eea4a6, type: 3}
+  Sprite:
+  - {fileID: 21300000, guid: 7f1b6d994cc9d174f9ca5d76a3c192de, type: 3}
+  - {fileID: 21300000, guid: 70a9f2821451b7b4c8e2ba8c32eea4a6, type: 3}
+  - {fileID: 21300000, guid: f6706098fb045ee41a57ecea5e8cb9fd, type: 3}
   Hit: 3
   AudioClip: {fileID: 8300000, guid: b08f83a76ccf9634aaea62b7bfa3e79e, type: 3}
+  Points: 20
+  PlayerStatsSO: {fileID: 11400000, guid: 12242c08a31c34826a66ceb268654cd3, type: 2}
 --- !u!212 &330878831131035113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,3 +105,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &-6335940010885930813
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158834171077572616}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.8, y: 2.8}
+    newSize: {x: 2.8, y: 2.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8, y: 2.8}
+  m_EdgeRadius: 0

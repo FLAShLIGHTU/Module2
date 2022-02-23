@@ -1,74 +1,79 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class Ball : MonoBehaviour
 {
-  #region Variables
+    #region Variables
 
-  [Header("Base Settings")] 
-  public Rigidbody2D Rb;
-  public float Speed;
-  public Vector2 Direction;
+    [Header("Base Settings")] public Rigidbody2D Rb;
+    public float Speed;
 
-  [Header("Pad Settings")] 
-  public Transform PadTransform;
-  public float YOffsetFromPad;
 
-  [Header("Audio")]
-  public AudioSource AudioSource;
+    [Header("Pad Settings")] public Transform PadTransform;
+    public float YOffsetFromPad;
 
-  private bool _isStarted;
+    [Header("Audio")] public AudioSource AudioSource;
 
-  #endregion
+    [Header("Random range")] public int XMin;
+    public int XMax;
+    public int YMin;
+    public int YMax;
 
-  #region Unity Lifecycle
+    private bool _isStarted;
+    private Vector2 _direction;
 
-  private void OnCollisionEnter2D(Collision2D col)
-  {
-    AudioSource.Play();
-  }
+    #endregion
 
-  private void Start()
-  {
-  }
+    #region Unity Lifecycle
+    
 
-  private void Update()
-  {
-    if (_isStarted)
+    private void Update()
     {
-      return;
+        if (_isStarted)
+        {
+            return;
+        }
+
+        MoveBallWithaPad();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartBall();
+        }
     }
 
-    MoveBallWithaPad();
+    #endregion
 
-    if (Input.GetMouseButtonDown(0))
+    #region Private methods
+
+    private void OnDrawGizmos()
     {
-      StartBall();
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, _direction);
     }
-  }
 
-  private void OnDrawGizmos()
-  {
-    Gizmos.color = Color.red;
-    Gizmos.DrawRay(transform.position, Direction);
-  }
+    private void MoveBallWithaPad()
+    {
+        Vector3 currentPosition = PadTransform.position;
+        currentPosition.y += YOffsetFromPad;
+        transform.position = currentPosition;
+    }
 
-  #endregion
+    private void StartBall()
+    {
+        _direction.x = Random.Range(XMin, XMax);
+        _direction.y = Random.Range(YMin, YMax);
 
-  #region Private methods
+        Rb.velocity = _direction.normalized * Speed;
+        _isStarted = true;
+    }
 
-  private void MoveBallWithaPad()
-  {
-    Vector3 currentPosition = PadTransform.position;
-    currentPosition.y += YOffsetFromPad;
-    transform.position = currentPosition;
-  }
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        AudioSource.Play();
+    }
 
-  private void StartBall()
-  {
-    Rb.velocity = Direction.normalized * Speed;
-    _isStarted = true;
-  }
-
-  #endregion
+    #endregion
 }
