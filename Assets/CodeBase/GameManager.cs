@@ -12,6 +12,7 @@ public class GameManager : SingletonMonoBehaviur<GameManager>
 
     //Debug for init to github
     //Debug for GitHub
+    //Debug for install this version to macbook
 
     #region Unity Lifecycle
 
@@ -31,13 +32,18 @@ public class GameManager : SingletonMonoBehaviur<GameManager>
 
     public void GameOver()
     {
-        if (_isGameOver)
-        {
-            return;
-        }
+      
+      if (_isGameOver)
+      {
+        return;
+      }
+      
+      _isGameOver = true;
+      Debug.Log("GG");
+      
+
         
-        _isGameOver = true;
-        Debug.Log("GG");
+        
     }
 
     #endregion
