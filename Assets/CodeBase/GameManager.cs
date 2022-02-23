@@ -11,7 +11,7 @@ public class GameManager : SingletonMonoBehaviur<GameManager>
 
 
     //Debug for init to github
-
+    //Debug for GitHub
 
     #region Unity Lifecycle
 
